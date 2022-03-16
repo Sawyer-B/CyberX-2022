@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 Network Diagram:
-![](Images/NetworkDiagram.png)
+![](./Images/NetworkDiagram.png)
 (Ansible/elkplaybook.yml) (Ansible/filebeat-playbook.yml) (Ansible/metricbeat-playbook.yml) 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook file may be used to install only certain pieces of it, such as Filebeat.
@@ -85,19 +85,19 @@ The configuration details of each machine may be found below:
 
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
+-40.87.89.46
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by ssh.
+JumpBox VM, the private ip address is, 
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | No                  | 10.0.0.1 10.0.0.2    |
+| Web 1    | No                  |                      |
+| Web 2    | No                  |                      |
 
 ### Elk Configuration
 
@@ -106,9 +106,11 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 - One main advantage of of automating configuration with ansible is the simplicity of it. It allows you to write a complex playbook and be able to reuse it for when you need it again.
 
 The playbook implements the following tasks:
-- _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install docker.io
+- Install Python-pip
+- Install Docker Container
+- Launch docker container: elk
+- Command: systcl -w vm.max_map_count=
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 

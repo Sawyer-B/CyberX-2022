@@ -95,9 +95,10 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | No                  | 10.0.0.1 10.0.0.2    |
-| Web 1    | No                  |                      |
-| Web 2    | No                  |                      |
+| Jump Box | Yes                 | 75.89.49.133         |
+| Web 1    | No                  | 10.0.0.4             |
+| Web 2    | No                  | 10.0.0.4             |
+| ELK VM   | Yes                 | 75.89.49.133         |
 
 ### Elk Configuration
 
@@ -110,11 +111,11 @@ The playbook implements the following tasks:
 - Install Python-pip
 - Install Docker Container
 - Launch docker container: elk
-- Command: systcl -w vm.max_map_count=
+- Command: systcl -w vm.max_map_count=262144
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![](Images/docker_ps_output.png)
+![](./Images/docker_ps_output.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:

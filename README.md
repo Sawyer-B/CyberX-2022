@@ -76,10 +76,10 @@ The configuration details of each machine may be found below:
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  | 40.87.89.46| Linux            |
+| Jump Box | Gateway  | 40.87.89.46|   Linux          |
 | Web One  | WebServer| 20.121.14.158| Linux          |
 | Web Two  | WebServer| 20.121.14.158| Linux          |
-| ELK VM   |Monitoring|20.119.228.252| Linux          |
+| ELK VM   |Monitoring| 20.119.228.252| Linux         |
 
 ### Access Policies
 
@@ -131,12 +131,12 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the elkplaybook file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the elkplaybook file to /etc/ansible.
+- Update the configuration file to include the webservers and Elk VM private IP's.
+- Run the playbook, and navigate to Elk VW to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
+- _Which file is the playbook? Where do you copy it? /etc/ansible/file/
 - _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
 - http://20.119.228.252:5601/app/kibana
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._

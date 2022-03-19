@@ -97,7 +97,7 @@ A summary of the access policies in place can be found in the table below.
 |----------|---------------------|----------------------|
 | Jump Box | Yes                 | 75.89.49.133         |
 | Web 1    | No                  | 10.0.0.4             |
-| Web 2    | No                  | 10.0.0.4             |
+| Web 2    | No                  | 10.0.0.5             |
 | ELK VM   | Yes                 | 75.89.49.133         |
 
 ### Elk Configuration
@@ -119,13 +119,16 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+-Web 1 (10.0.0.4)
+-Web 2 (10.0.0.5)
 
 We have installed the following Beats on these machines:
-- _TODO: Specify which Beats you successfully installed_
+-Filebeat
+-Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+-Filebeat monitors log files or locations you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+-Metricbeat collects metrics from the operating system and from services running on the server
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
@@ -133,10 +136,16 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the elkplaybook file to /etc/ansible.
 - Update the configuration file to include the webservers and Elk VM private IP's.
-- Run the playbook, and navigate to Elk VW to check that the installation worked as expected.
+- Run the playbook, and navigate to Elk VM to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it? /etc/ansible/file/
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
+- _Which file is the playbook? Where do you copy it? /etc/ansible/file/filebeat-configuration.yml
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? Edit the /etc/ansible/hosts file to add webserver/elkserver ip addresses.
 - http://20.119.228.252:5601/app/kibana
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+- ssh azadmin@JumpBox(Public IP)
+- sudo docker container list -a (locate your ansible container)
+- sudo docker start container (name of the container)
+- sudo docker attach container (name of the container)
+- cd /etc/ansible/ - ansible-playbook elk.yml (configures Elk-Server and starts the Elk container on the Elk-Server) wait a couple minutes for the implementation of the Elk-Server - cd /etc/ansible/roles/ - ansible-playbook filebeat-playbook.yml (installs Filebeat and Metricbeat) - open a new web browser (http://[your.ELK-VM.External.IP]:5601/app/kibana) This will bring up the Kibana Web Portal - check the Module status for file beat and metric beat to see their data receiving.
+
+** You will need to ensure all files are properly placed before running the ansible-playbooks.

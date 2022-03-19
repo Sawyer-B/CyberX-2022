@@ -139,9 +139,10 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and navigate to Elk VM to check that the installation worked as expected.
 
 - _Which file is the playbook? Where do you copy it? /etc/ansible/file/filebeat-configuration.yml
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? Edit the /etc/ansible/hosts file to add webserver/elkserver ip addresses.
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on? Edit the etc/ansible/hosts file to add webserver/elkserver IP addresses.
 - http://20.119.228.252:5601/app/kibana
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+
+Provide the specific commands the user will need to run to download the playbook, update the files, etc.
 - ssh azadmin@JumpBox(Public IP)
 - sudo docker container list -a (locate your ansible container)
 - sudo docker start container (name of the container)
